@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
 
 class Header extends React.Component {
     constructor(props, context) {
@@ -7,6 +8,7 @@ class Header extends React.Component {
     }
 
     render() {
+        console.log(this.props.auth);
         return (
             <div>
                 <Link to="/">React SSR</Link>
@@ -15,4 +17,8 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+function mapStateToProps({auth}) {
+    return {auth};
+}
+
+export default connect(mapStateToProps)(Header);
